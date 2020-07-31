@@ -1,0 +1,38 @@
+include: package:lint/analysis_options.yaml
+
+linter:
+  rules:
+    - parameter_assignments
+
+analyzer:
+  errors:
+    missing_required_param: error
+    missing_return: error
+    must_be_immutable: error
+    parameter_assignments: error
+    yield_of_invalid_type: warning
+    sort_unnamed_constructors_first: ignore
+    avoid_positional_boolean_parameters: ignore
+    # set return_of_invalid_type: warning for chefsfarmweb sql_storage.dart
+    # return_of_invalid_type: warning
+    # return_of_invalid_type_from_closure: warning
+
+  exclude: [
+    build/**, 
+    lib/globals.dart,
+    lib/lang/**,
+    lib/**/*freezed.dart,
+    ]
+
+  # exclude: 
+  #   - build/**
+  #   - lib/application/auth/*.freezed.dart
+  #   - lib/domain/core/*.freezed.dart
+  #   - lib/globals.dart
+
+  strong-mode:
+    implicit-casts: false
+
+# linter:
+#   rules:
+#     - camel_case_types
