@@ -22,7 +22,7 @@ class App extends StatelessWidget {
       supportedLocales: I18nDelegate.supportedLocals,
       builder: ExtendedNavigator(router: Router()),
       theme: ThemeData.light().copyWith(
-        primaryColor: Colors.green[800],
+        primaryColor: Colors.blue[800],
         accentColor: Colors.blueAccent,
         floatingActionButtonTheme: FloatingActionButtonThemeData(
           backgroundColor: Colors.blue[900],
