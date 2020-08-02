@@ -22,7 +22,7 @@
 
 # Firebase
 google-services.json
-GoogleService.plist
+GoogleService-Info.plist
 **/node_modules/
 chefsfarm-a702b-firebase-adminsdk-3z0v6-79eeec319a.json
 
