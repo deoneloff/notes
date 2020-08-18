@@ -2,7 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:notes/application/sign_in_form/sign_in_form_bloc.dart';
+import 'package:notes/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:notes/domain/auth/i_auth_facade.dart';
 import 'package:notes/domain/auth/value_objects.dart';
 

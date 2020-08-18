@@ -1,3 +1,4 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logging/logging.dart';
@@ -11,6 +12,8 @@ import 'injection.dart';
 // ignore: avoid_void_async
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Crashlytics.instance.enableInDevMode = true;
+  FlutterError.onError = Crashlytics.instance.recordFlutterError;
   final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
   // Directory(appDocumentDir.path).delete(recursive: true);
   Hive.init(appDocumentDir.path);

@@ -13,6 +13,7 @@ analyzer:
     yield_of_invalid_type: warning
     sort_unnamed_constructors_first: ignore
     avoid_positional_boolean_parameters: ignore
+    constant_identifier_names: ignore
     # set return_of_invalid_type: warning for chefsfarmweb sql_storage.dart
     # return_of_invalid_type: warning
     # return_of_invalid_type_from_closure: warning
