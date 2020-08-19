@@ -2,6 +2,7 @@
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,8 @@ import '../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
 import '../../../router.gr.dart';
 
 class SignInForm extends StatelessWidget {
+  final FirebaseAnalytics analytics = FirebaseAnalytics();
+
   @override
   Widget build(BuildContext context) {
     final Logger log = Logger('SignInForm');
@@ -161,7 +164,11 @@ class SignInForm extends StatelessWidget {
                   onPressed: () {
                     log.finer('CRASH!!!');
                     Crashlytics.instance.log('Testing Crashlytics...');
-                    throw TestingFirebaseCrashLytics();
+                    analytics.logEvent(
+                      name: 'button_press',
+                      parameters: {'sign_in_form': 'Testing Crashlytics'},
+                    );
+                    // throw TestingFirebaseCrashLytics();
                   },
                 ),
               ),

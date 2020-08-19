@@ -121,7 +121,7 @@ class NoteFormPageScaffold extends StatelessWidget {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.check),
+            icon: const Icon(Icons.check),
             onPressed: () {
               context.bloc<NoteFormBloc>().add(const NoteFormEvent.saved());
             },

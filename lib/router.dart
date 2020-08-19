@@ -21,12 +21,12 @@ import 'presentation/splash/splash_page.dart';
       transitionsBuilder: TransitionsBuilders.slideRightWithFade,
       durationInMilliseconds: 500,
     ),
-    CustomRoute(
-      page: NoteFormPage,
-      fullscreenDialog: true,
-      transitionsBuilder: TransitionsBuilders.slideRightWithFade,
-      durationInMilliseconds: 500,
-    ),
+    // CustomRoute(
+    //   page: NoteFormPage,
+    //   fullscreenDialog: true,
+    //   transitionsBuilder: TransitionsBuilders.slideRightWithFade,
+    //   durationInMilliseconds: 500,
+    // ),
   ],
 )
 class $Router {}
