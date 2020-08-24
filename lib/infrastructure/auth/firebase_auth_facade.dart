@@ -6,11 +6,11 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
+import './firebase_user_mapper.dart';
+import '../../domain/auth/appuser.dart';
 import '../../domain/auth/auth_failure.dart';
 import '../../domain/auth/i_auth_facade.dart';
-import '../../domain/auth/user.dart';
 import '../../domain/auth/value_objects.dart';
-import './firebase_user_mapper.dart';
 
 @LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
@@ -23,9 +23,13 @@ class FirebaseAuthFacade implements IAuthFacade {
   );
 
   @override
-  Future<Option<User>> getSignedInUser() => _firebaseAuth
-      .currentUser()
-      .then((firebaseUser) => optionOf(firebaseUser?.toDomain()));
+  Future<Option<AppUser>> getSignedInUser() async {
+    final firebaseUser = _firebaseAuth.currentUser;
+    return optionOf(firebaseUser?.toDomain());
+
+    // return _firebaseAuth.currentUser
+    //     .then((firebaseUser) => optionOf(firebaseUser?.toDomain()));
+  }
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
@@ -80,7 +84,7 @@ class FirebaseAuthFacade implements IAuthFacade {
         return left(const AuthFailure.cancelledByUser());
       }
       final googleAuthentication = await googleUser.authentication;
-      final authCredential = GoogleAuthProvider.getCredential(
+      final authCredential = GoogleAuthProvider.credential(
         idToken: googleAuthentication.idToken,
         accessToken: googleAuthentication.accessToken,
       );
@@ -107,7 +111,7 @@ class FirebaseAuthFacade implements IAuthFacade {
         if (result.email == null) {
           return left(const AuthFailure.emailNotSpecified());
         }
-        const OAuthProvider(providerId: 'apple.com').getCredential(
+        OAuthProvider('apple.com').credential(
           idToken: result.identityToken,
           accessToken: result.authorizationCode,
         );

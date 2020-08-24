@@ -13,15 +13,15 @@ abstract class FirebaseInjectableModule {
   @lazySingleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
   @lazySingleton
-  Firestore get firestore {
-    final Logger log = Logger('FirebaseInjectableModule');
-    final String host = Platform.isAndroid ? '10.0.2.2:8080' : 'localhost:8080';
-    log.fine(host);
-    Firestore.instance.settings(
-      host: host,
-      sslEnabled: false,
-      persistenceEnabled: false,
-    );
-    return Firestore.instance;
+  FirebaseFirestore get firestore {
+    // final Logger log = Logger('FirebaseInjectableModule');
+    // final String host = Platform.isAndroid ? '10.0.2.2:8080' : 'localhost:8080';
+    // log.fine(host);
+    // Firestore.instance.settings(
+    //   host: host,
+    //   sslEnabled: false,
+    //   persistenceEnabled: false,
+    // );
+    return FirebaseFirestore.instance;
   }
 }
